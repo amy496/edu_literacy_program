@@ -16,6 +16,9 @@ class LitAppConfig(AppConfig):
         self.add_sample_student()
         self.load_tests_from_json(BASE_DIR / 'sample_tests')
 
+        if os.environ.get('LIT_APP_RESET'):
+            self.load_tests_from_json(BASE_DIR / 'sample_tests')
+
     def add_sample_student(self):
         from lit_app.models import Student
         
